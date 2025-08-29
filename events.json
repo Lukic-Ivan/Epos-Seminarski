@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Team Standup Meeting",
+    "description": "Daily standup meeting with the development team. Discuss progress, blockers, and plan for the day.",
+    "date_time": "2025-08-27T11:24:59.797190",
+    "notification_minutes": 15,
+    "notified": true
+  },
+  {
+    "title": "Project Presentation",
+    "description": "Present the Smart Office Planner project to stakeholders. Prepare slides and demo.",
+    "date_time": "2025-08-28T12:54:59.797190",
+    "notification_minutes": 60,
+    "notified": false
+  },
+  {
+    "title": "Client Requirements Review",
+    "description": "Review client requirements for the new features. Prepare questions and documentation.",
+    "date_time": "2025-09-03T08:54:59.797190",
+    "notification_minutes": 30,
+    "notified": false
+  },
+  {
+    "title": "Seminar Paper Submission",
+    "description": "Submit the Smart Offices seminar paper. Final review and formatting needed.",
+    "date_time": "2025-08-30T18:54:59.797190",
+    "notification_minutes": 120,
+    "notified": false
+  },
+  {
+    "title": "Coffee Break with Colleagues",
+    "description": "Informal coffee break to discuss new ideas and team building.",
+    "date_time": "2025-08-27T12:54:59.797190",
+    "notification_minutes": 10,
+    "notified": true
+  }
+]
