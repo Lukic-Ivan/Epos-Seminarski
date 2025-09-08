@@ -1,37 +1,16 @@
 [
   {
-    "title": "Jutarnji standup tim",
-    "description": "Dnevni standup sastanak sa razvojnim timom. Diskusija o napretku, preprekama i planu za dan.",
-    "date_time": "2025-08-29T13:33:42.060356",
-    "notification_minutes": 15,
-    "notified": false
-  },
-  {
-    "title": "Prezentacija projekta",
-    "description": "Prezentacija Pametnog Kancelarijskog Planera zainteresovanim stranama. Priprema slajdova i demo.",
-    "date_time": "2025-08-30T15:03:42.060356",
-    "notification_minutes": 60,
-    "notified": false
-  },
-  {
-    "title": "Pregled zahteva klijenta",
-    "description": "Pregled zahteva klijenta za nove funkcionalnosti. Priprema pitanja i dokumentacije.",
-    "date_time": "2025-09-05T11:03:42.060356",
+    "title": "kafica sa menadzerom",
+    "description": "kaficaa",
+    "date_time": "2025-09-11T09:57:00",
     "notification_minutes": 30,
     "notified": false
   },
   {
-    "title": "Predaja seminarskog rada",
-    "description": "Predaja seminarskog rada o Pametnim kancelarijama. Potreban je finalni pregled i formatiranje.",
-    "date_time": "2025-09-01T21:03:42.060356",
-    "notification_minutes": 120,
-    "notified": false
-  },
-  {
-    "title": "Pauza za kafu sa kolegama",
-    "description": "Neformalna pauza za kafu za diskusiju novih ideja i timsko okupljanje.",
-    "date_time": "2025-08-29T15:03:42.060356",
-    "notification_minutes": 10,
+    "title": "test",
+    "description": "test",
+    "date_time": "2025-09-12T10:25:00",
+    "notification_minutes": 15,
     "notified": false
   }
 ]
