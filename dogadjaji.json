@@ -1,16 +1,72 @@
 [
   {
-    "title": "kafica sa menadzerom",
-    "description": "kaficaa",
-    "date_time": "2025-09-11T09:57:00",
+    "title": "sastanak sa profesorom",
+    "description": "konsultacije u kabinetu 203",
+    "date_time": "2025-09-13T12:00:00",
+    "notification_minutes": 20,
+    "notified": false
+  },
+  {
+    "title": "tim meeting",
+    "description": "diskusija o projektu u sali 5",
+    "date_time": "2025-09-14T14:30:00",
     "notification_minutes": 30,
     "notified": false
   },
   {
-    "title": "test",
-    "description": "test",
-    "date_time": "2025-09-12T10:25:00",
+    "title": "trening kosarke",
+    "description": "trening u skolskom dvoristu",
+    "date_time": "2025-09-15T18:00:00",
+    "notification_minutes": 60,
+    "notified": false
+  },
+  {
+    "title": "rođendan Perica",
+    "description": "proslava posle posla",
+    "date_time": "2025-09-28T20:00:00",
+    "notification_minutes": 120,
+    "notified": false
+  },
+  {
+    "title": "pregled kod zubara",
+    "description": "ordinacija SmileDent",
+    "date_time": "2025-09-17T11:15:00",
+    "notification_minutes": 45,
+    "notified": false
+  },
+  {
+    "title": "ispit iz matematike",
+    "description": "amfiteatar A1",
+    "date_time": "2025-09-18T09:00:00",
+    "notification_minutes": 90,
+    "notified": false
+  },
+  {
+    "title": "večera sa porodicom",
+    "description": "porodična večera kod bake",
+    "date_time": "2025-09-19T19:30:00",
+    "notification_minutes": 30,
+    "notified": false
+  },
+  {
+    "title": "kupovina namirnica",
+    "description": "tempo hipermarket",
+    "date_time": "2025-09-20T16:00:00",
     "notification_minutes": 15,
+    "notified": false
+  },
+  {
+    "title": "online radionica",
+    "description": "zoom link u mailu",
+    "date_time": "2025-09-21T17:00:00",
+    "notification_minutes": 25,
+    "notified": false
+  },
+  {
+    "title": "šetnja sa prijateljima",
+    "description": "Kalemegdan",
+    "date_time": "2025-09-22T18:30:00",
+    "notification_minutes": 20,
     "notified": false
   }
 ]
