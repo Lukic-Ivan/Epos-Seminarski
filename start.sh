@@ -31,9 +31,9 @@ try:
         message='Pokretanje... Sistem obaveštenja radi!',
         timeout=3
     )
-    print('Sistem obaveštenja radi')
+    # print('Sistem obaveštenja radi')
 except Exception as e:
-    print(f'⚠️  Sistem obaveštenja neće raditi ispravno: {e}')
+    print(f'Sistem obaveštenja neće raditi ispravno: {e}')
 "
 python main.py
 echo "Projektni zadatak za Epos Seminarski"
