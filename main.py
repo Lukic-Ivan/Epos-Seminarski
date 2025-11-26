@@ -64,13 +64,15 @@ class SmartOfficePlannerApp:
         list_frame.grid(row=1, column=1, columnspan=2, sticky=(tk.W, tk.E, tk.N, tk.S))
         list_frame.columnconfigure(0, weight=1)
         list_frame.rowconfigure(0, weight=1)
-        columns = ("Naslov", "Datum i vreme", "Vreme do", "Status")
+        columns = ("Naslov", "Tagovi", "Datum i vreme", "Vreme do", "Status")
         self.event_tree = ttk.Treeview(list_frame, columns=columns, show="headings", height=20)
         self.event_tree.heading("Naslov", text="Naslov događaja")
+        self.event_tree.heading("Tagovi", text="Tagovi")
         self.event_tree.heading("Datum i vreme", text="Datum i vreme")
         self.event_tree.heading("Vreme do", text="Vreme do")
         self.event_tree.heading("Status", text="Status")
-        self.event_tree.column("Naslov", width=250, minwidth=200)
+        self.event_tree.column("Naslov", width=200, minwidth=150)
+        self.event_tree.column("Tagovi", width=150, minwidth=100)
         self.event_tree.column("Datum i vreme", width=150, minwidth=120)
         self.event_tree.column("Vreme do", width=120, minwidth=100)
         self.event_tree.column("Status", width=100, minwidth=80)
@@ -189,8 +191,12 @@ class SmartOfficePlannerApp:
                 status = "📅 Zakazan"
                 tags = ("scheduled",)
             
+            # Format tags for display
+            tags_display = ", ".join(event.tags) if event.tags else ""
+            
             self.event_tree.insert("", "end", values=(
                 event.title,
+                tags_display,
                 event.date_time.strftime("%d.%m.%Y %H:%M"),
                 event.time_until_event(),
                 status
@@ -234,6 +240,12 @@ class SmartOfficePlannerApp:
             month_name = months_sr[selected_event.date_time.month - 1]
             
             details = f"Naslov: {selected_event.title}\n\n"
+            
+            # Display tags
+            if selected_event.tags:
+                tags_str = ", ".join(selected_event.tags)
+                details += f"Tagovi: {tags_str}\n\n"
+            
             details += f"Datum i vreme: {day_name}, {selected_event.date_time.day}. {month_name} {selected_event.date_time.year} u {selected_event.date_time.strftime('%H:%M')}\n\n"
             details += f"Vreme do događaja: {selected_event.time_until_event()}\n\n"
             details += f"Obaveštenje: {selected_event.notification_minutes} minuta pre\n\n"

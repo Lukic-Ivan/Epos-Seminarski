@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 from datetime import datetime, timedelta
-from typing import Optional
+from typing import Optional, List
 from event_manager import Event
 
 class AddEventDialog:
@@ -13,14 +13,14 @@ class AddEventDialog:
         
         self.dialog = tk.Toplevel(parent)
         self.dialog.title("Dodaj događaj" if event is None else "Izmeni događaj")
-        self.dialog.geometry("500x400")
+        self.dialog.geometry("600x650")
         self.dialog.resizable(False, False)
         self.dialog.transient(parent)
         
         self.dialog.update_idletasks()
-        x = (self.dialog.winfo_screenwidth() // 2) - (500 // 2)
-        y = (self.dialog.winfo_screenheight() // 2) - (400 // 2)
-        self.dialog.geometry(f"500x400+{x}+{y}")
+        x = (self.dialog.winfo_screenwidth() // 2) - (600 // 2)
+        y = (self.dialog.winfo_screenheight() // 2) - (650 // 2)
+        self.dialog.geometry(f"600x650+{x}+{y}")
         
         self.create_widgets()
         
@@ -80,8 +80,25 @@ class AddEventDialog:
         notification_combo.grid(row=0, column=1, padx=(0, 5))
         ttk.Label(notification_frame, text="minuta pre").grid(row=0, column=2, sticky=tk.W)
 
+        # Tag selection frame
+        tag_frame = ttk.LabelFrame(main_frame, text="Tagovi", padding="10")
+        tag_frame.grid(row=7, column=0, columnspan=2, sticky=(tk.W, tk.E), pady=(0, 15))
+        
+        self.tag_vars = {}
+        tag_checkbuttons_frame = ttk.Frame(tag_frame)
+        tag_checkbuttons_frame.grid(row=0, column=0, sticky=(tk.W, tk.E))
+        
+        # Create checkbuttons for tags (3 columns layout)
+        for i, tag in enumerate(Event.AVAILABLE_TAGS):
+            var = tk.BooleanVar()
+            self.tag_vars[tag] = var
+            cb = ttk.Checkbutton(tag_checkbuttons_frame, text=tag, variable=var)
+            cb.grid(row=i // 3, column=i % 3, sticky=tk.W, padx=5, pady=2)
+        
+        # Update button frame row
         button_frame = ttk.Frame(main_frame)
-        button_frame.grid(row=7, column=0, columnspan=2, pady=(10, 0))
+        button_frame.grid(row=8, column=0, columnspan=2, pady=(10, 0))
+
         
         ttk.Button(button_frame, text="Sačuvaj", command=self.save_event).pack(side=tk.LEFT, padx=(0, 10))
         ttk.Button(button_frame, text="Otkaži", command=self.cancel).pack(side=tk.LEFT)
@@ -101,6 +118,11 @@ class AddEventDialog:
             self.date_var.set(self.event.date_time.strftime("%Y-%m-%d"))
             self.time_var.set(self.event.date_time.strftime("%H:%M"))
             self.notification_var.set(str(self.event.notification_minutes))
+            
+            # Set tags
+            for tag in self.event.tags:
+                if tag in self.tag_vars:
+                    self.tag_vars[tag].set(True)
     
     def set_today(self):
         self.date_var.set(datetime.now().strftime("%Y-%m-%d"))
@@ -143,11 +165,16 @@ class AddEventDialog:
         except ValueError:
             messagebox.showerror("Greška", "Molimo izaberite važeće vreme obaveštenja.")
             return
+        
+        # Get selected tags
+        selected_tags = [tag for tag, var in self.tag_vars.items() if var.get()]
+        
         self.result = Event(
             title=title,
             description=description,
             date_time=event_datetime,
-            notification_minutes=notification_minutes
+            notification_minutes=notification_minutes,
+            tags=selected_tags
         )
         
         self.dialog.destroy()

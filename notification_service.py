@@ -14,11 +14,14 @@ class NotificationService:
         try:
             time_until = event.time_until_event()
             
+            # Format tags for notification
+            tags_str = f" [{', '.join(event.tags)}]" if event.tags else ""
+            
             if event.is_overdue():
-                title = f"⚠️ Prošao je rok: {event.title}"
+                title = f"⚠️ Prošao je rok: {event.title}{tags_str}"
                 message = f"Događaj je bio zakazan za {event.date_time.strftime('%d.%m.%Y %H:%M')}\n\n{event.description}"
             else:
-                title = f"🔔 Predstojeći događaj: {event.title}"
+                title = f"🔔 Predstojeći događaj: {event.title}{tags_str}"
                 message = f"Zakazano za: {event.date_time.strftime('%d.%m.%Y %H:%M')}\nVreme do događaja: {time_until}\n\n{event.description}"
             
             notification.notify(

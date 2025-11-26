@@ -4,12 +4,32 @@ from datetime import datetime, timedelta
 from typing import List, Dict
 
 class Event:
-    def __init__(self, title: str, description: str, date_time: datetime, notification_minutes: int = 15):
+    # Predefinisani tagovi
+    AVAILABLE_TAGS = [
+        "posao",        # work
+        "sastanak",     # meeting
+        "obrazovanje",  # education
+        "zdravlje",     # health
+        "sport",        # sports
+        "lično",        # personal
+        "društveno",    # social
+        "kupovina",     # shopping
+        "zabava",       # entertainment
+        "porodica",     # family
+        "putovanje",    # travel
+        "projekat",     # project
+        "rok",          # deadline
+        "drugo"         # other
+    ]
+    
+    def __init__(self, title: str, description: str, date_time: datetime, 
+                 notification_minutes: int = 15, tags: List[str] = None):
         self.title = title
         self.description = description
         self.date_time = date_time
         self.notification_minutes = notification_minutes
         self.notified = False
+        self.tags = tags if tags else []
     
     def to_dict(self) -> Dict:
         return {
@@ -17,7 +37,8 @@ class Event:
             'description': self.description,
             'date_time': self.date_time.isoformat(),
             'notification_minutes': self.notification_minutes,
-            'notified': self.notified
+            'notified': self.notified,
+            'tags': self.tags
         }
     
     @classmethod
@@ -26,7 +47,8 @@ class Event:
             title=data['title'],
             description=data['description'],
             date_time=datetime.fromisoformat(data['date_time']),
-            notification_minutes=data['notification_minutes']
+            notification_minutes=data['notification_minutes'],
+            tags=data.get('tags', [])
         )
         event.notified = data.get('notified', False)
         return event
